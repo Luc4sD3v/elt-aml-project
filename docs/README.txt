@@ -1,74 +1,31 @@
-# AML Detection Pipeline com Airflow e DuckDB
+# ELT AML Project — Airflow + DuckDB
 
-Este projeto implementa um pipeline ELT completo para análise e detecção de padrões de lavagem de dinheiro (AML – Anti-Money Laundering), utilizando **Apache Airflow** para orquestração e **DuckDB** como motor analítico para transformação dos dados.
+## Visão Geral
 
-O pipeline segue a arquitetura Bronze → Silver → Gold, garantindo organização, padronização e rastreabilidade. O dataset escolhido contém transações financeiras simuladas com variáveis relevantes para cenários de AML, o que permite criar KPIs realistas usados no setor financeiro.
+Este projeto implementa um pipeline ELT utilizando Apache Airflow e DuckDB para o processamento de dados de transações financeiras com foco em Anti-Money Laundering (AML).
 
----
-
-## Estrutura Geral do Pipeline (ELT)
-
-### 1. Extract (Bronze)
-O pipeline lê os dados brutos e armazena na camada Bronze.  
-A etapa utiliza DuckDB para carregar arquivos CSV com eficiência.
-
-Principais ações:
-- Leitura dos dados brutos.
-- Limite opcional de linhas para evitar excesso de memória.
-- Conversão para Parquet.
-
-### 2. Transform (Silver)
-Nesta etapa ocorre o tratamento dos dados:
-- Limpeza e padronização.
-- Conversão de tipos.
-- Criação de colunas derivadas (ex.: flags de lavagem, transação internacional).
-
-A saída também é armazenada como Parquet.
-
-### 3. Analytics / Load (Gold)
-O script `silver_to_gold.py` gera indicadores de negócio importantes para AML:
-
-- Taxa de lavagem.  
-- Volume financeiro por país.  
-- Valor médio por tipo (suspeito vs não suspeito).  
-- Ranking de tipologias de lavagem.  
-- Percentual de transações internacionais.  
-
-Cada KPI é exportado como um arquivo Parquet individual.
+O pipeline processa o dataset **SAML-D**, um dataset sintético de transações bancárias voltado para pesquisas em monitoramento de lavagem de dinheiro, transformando dados brutos em KPIs analíticos organizados nas camadas Bronze, Silver e Gold.
 
 ---
 
-## Papel do Airflow
+## Dataset
 
-O Airflow orquestra todo o pipeline. Ele define:
-- ordem de execução,
-- dependências,
-- agendamento,
-- logs,
-- monitoramento visual.
+O projeto utiliza o dataset **SAML-D – Synthetic AML Dataset**, publicado em:
 
-O arquivo `elt_aml_project.py` cria um DAG com três tarefas:
+> Oztas, B. et al.  
+> *Enhancing Anti-Money Laundering: Development of a Synthetic Transaction Monitoring Dataset*  
+> IEEE ICEBE 2023  
+> https://ieeexplore.ieee.org/document/10356193
 
-1. `extract_to_bronze`  
-2. `bronze_to_silver`  
-3. `silver_to_gold`
+O dataset contém:
+- Mais de 9,5 milhões de transações
+- 12 variáveis
+- 28 tipologias (normais e suspeitas)
+- Apenas ~0,1% das transações são classificadas como suspeitas
 
-Cada tarefa executa uma função Python correspondente aos scripts do pipeline.  
+⚠️ **O dataset não está no repositório devido ao limite de tamanho do GitHub.**
 
-Fluxo completo:  
-**Extract → Transform Bronze → Transform Silver → Gold**
+### Como adicionar o dataset localmente:
 
----
-
-## Papel do DuckDB
-
-DuckDB é um banco analítico local, rápido e leve. Ele executa:
-- SQL de transformação,
-- leitura de CSV e Parquet,
-- criação de tabelas temporárias,
-- geração dos arquivos Gold.
-
-Aparece no código em:
-
-```python
-con = duckdb.connect()
+1. Baixe o dataset no link acima
+2. Renomeie o arquivo para:
