@@ -7,7 +7,7 @@ data/gold/
 # Logs
 logs/
 
-# Ambiente virtual
+# Ambiente
 .env
 __pycache__/
 
