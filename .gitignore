@@ -1,0 +1,8 @@
+# Datasets grandes
+data/raw/*.csv
+data/bronze/*.csv
+data/silver/*.csv
+data/gold/*.csv
+
+# Logs
+logs/
