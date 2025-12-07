@@ -25,7 +25,17 @@ O dataset contém:
 ### Como adicionar o dataset localmente:
 
 1. Baixe o dataset no link acima
+2. Crie uma pasta chamada 'raw' dentro da pasta data
+3. certifique-se que o arquivo csv se chama 'SAML-D.csv'
 ---
+
+### Como subir e rodar o airflow:
+1. Digitar "docker compose up -d" no bash
+2. acessar http://localhost:8080/
+3. admin: airflow
+4. senha: airflow
+5. Executar a DAG "elt_aml_project"
+
 
 ## Arquitetura do Pipeline
 
