@@ -25,4 +25,93 @@ O dataset contém:
 ### Como adicionar o dataset localmente:
 
 1. Baixe o dataset no link acima
-2. Renomeie o arquivo para:
+---
+
+## Arquitetura do Pipeline
+
+O projeto segue uma arquitetura de dados em camadas no formato **Bronze → Silver → Gold**, orquestrada por uma DAG no **Apache Airflow** e utilizando o **DuckDB** como mecanismo de processamento analítico local.
+
+### Visão Geral do Fluxo
+
+
+- **RAW:** dados brutos conforme fornecidos pela fonte original
+- **BRONZE:** cópia inicial e controle da ingestão
+- **SILVER:** dados tratados, tipados e estruturados
+- **GOLD:** camadas analíticas com KPIs prontos para consumo
+
+---
+
+## Orquestração com Airflow
+
+A orquestração do pipeline é realizada através de uma DAG do Airflow (`elt_projeto_final.py`), que controla a execução sequencial das etapas:
+
+1. **Extract**
+2. **Bronze → Silver**
+3. **Silver → Gold**
+
+O Airflow permite agendamento, controle de dependências, visualização da execução e reprocessamento das tarefas em caso de falha.
+
+---
+
+## Descrição dos Scripts
+
+### `extract.py` — Ingestão para a Camada Bronze
+
+Responsável por copiar o dataset bruto para a camada Bronze.
+
+Funções principais:
+- Leitura do arquivo CSV da pasta `raw`
+- Armazenamento na camada `bronze`
+- Simula a ingestão de dados de uma fonte externa
+
+---
+
+### `bronze_to_silver.py` — Camada Silver (Transformação)
+
+Responsável por transformar os dados brutos em dados estruturados e preparados para análise.
+
+Principais transformações:
+- Conversão de data e hora para timestamp
+- Tipagem de campos numéricos
+- Padronização de nomes
+- Criação do indicador `is_cross_border`
+- Filtro de valores inválidos
+
+Tecnologia:
+- DuckDB para execução SQL local
+- Exportação em formato Parquet
+
+---
+
+### `silver_to_gold.py` — Camada Gold (KPIs Analíticos)
+
+Responsável por gerar métricas analíticas a partir dos dados tratados.
+
+KPIs gerados:
+- Taxa de transações suspeitas
+- Volume financeiro por país
+- Valor médio por tipo de transação
+- Ranking de tipologias de lavagem
+- Percentual de transações internacionais
+
+---
+
+## Arquivo de Configuração (YAML)
+
+O projeto utiliza arquivo **YAML de configuração** para parametrizar diretórios, caminhos e variáveis do pipeline, permitindo:
+
+- Separação entre código e configuração
+- Facilidade de manutenção
+- Reaproveitamento do pipeline com novos datasets
+- Padronização de ambientes
+
+---
+
+## Tecnologias Utilizadas
+
+- **Apache Airflow** — Orquestração
+- **DuckDB** — Engine analítica
+- **Python** — Scripts de processamento
+- **Parquet** — Armazenamento analítico
+- **Git/GitHub** — Versionamento
+- **YAML** — Configuração
