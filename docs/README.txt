@@ -12,10 +12,7 @@ O pipeline processa o dataset **SAML-D**, um dataset sintético de transações 
 
 O projeto utiliza o dataset **SAML-D – Synthetic AML Dataset**, publicado em:
 
-> Oztas, B. et al.  
-> *Enhancing Anti-Money Laundering: Development of a Synthetic Transaction Monitoring Dataset*  
-> IEEE ICEBE 2023  
-> https://ieeexplore.ieee.org/document/10356193
+> https://www.kaggle.com/datasets/berkanoztas/synthetic-transaction-monitoring-dataset-aml
 
 O dataset contém:
 - Mais de 9,5 milhões de transações
