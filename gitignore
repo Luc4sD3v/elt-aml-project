@@ -1,13 +1,19 @@
-# Arquivos grandes e datasets
+# Dados
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+
+# Logs
+logs/
+
+# Ambiente virtual
+.env
+__pycache__/
+
+# Arquivos de banco
+*.duckdb
+
+# Arquivos grandes
 *.csv
 *.parquet
-*.duckdb
-*.mp4
-
-# Pastas a ignorar
-logs/
-data/
-
-# Arquivos do Python
-__pycache__/
-*.pyc
