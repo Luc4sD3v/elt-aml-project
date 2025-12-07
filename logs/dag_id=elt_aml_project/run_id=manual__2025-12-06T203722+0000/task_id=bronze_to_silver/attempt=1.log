@@ -1,0 +1,8 @@
+{"timestamp":"2025-12-06T20:38:47.082423Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-12-06T20:38:47.083929Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/elt_aml_project.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-12-06T20:38:47.274538Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/elt_aml_project.py","lineno":6,"logger":"py.warnings"}
+{"timestamp":"2025-12-06T20:38:47.317891Z","level":"info","event":"🚀 Iniciando Bronze → Silver","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:03.738356Z","level":"info","event":"✅ CSV carregado no DuckDB.","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:05.492976Z","level":"info","event":"✅ Transformações aplicadas.","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:06.820047Z","level":"info","event":"✅ Camada SILVER gerada com sucesso.","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:06.891550Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator","filename":"python.py","lineno":215}

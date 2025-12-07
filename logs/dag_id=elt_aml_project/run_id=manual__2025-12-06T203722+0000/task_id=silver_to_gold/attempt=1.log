@@ -1,0 +1,11 @@
+{"timestamp":"2025-12-06T20:39:07.787969Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-12-06T20:39:07.789861Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/elt_aml_project.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-12-06T20:39:07.975034Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/elt_aml_project.py","lineno":6,"logger":"py.warnings"}
+{"timestamp":"2025-12-06T20:39:08.030957Z","level":"info","event":"🚀 Iniciando Silver → Gold","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.139767Z","level":"info","event":"KPI 1 gerado","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.242657Z","level":"info","event":"KPI 2 gerado","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.337517Z","level":"info","event":"KPI 3 gerado","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.459323Z","level":"info","event":"KPI 4 gerado","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.518327Z","level":"info","event":"KPI 5 gerado","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.525140Z","level":"info","event":"Gold gerada com sucesso.","logger":"task.stdout"}
+{"timestamp":"2025-12-06T20:39:08.525145Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator","filename":"python.py","lineno":215}

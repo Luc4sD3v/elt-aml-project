@@ -1,0 +1,13 @@
+# Arquivos grandes e datasets
+*.csv
+*.parquet
+*.duckdb
+*.mp4
+
+# Pastas a ignorar
+logs/
+data/
+
+# Arquivos do Python
+__pycache__/
+*.pyc
